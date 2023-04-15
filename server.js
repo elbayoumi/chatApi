@@ -8,9 +8,8 @@ const io = require("socket.io")(server, {
     }
 });
 app.get('/', (req, res) => {
-    res.send('hello world');
-    res.send({"hello": "world"});
-  })
+    res.status(200).json({ message: 'ok' });
+})
 io.on('connection', (socket) => {
     console.log('connection');
     socket.on("sendChatToServer", (messege) => {
