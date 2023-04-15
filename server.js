@@ -7,11 +7,11 @@ const io = require("socket.io")(server, {
 
     }
 });
-const socket = require("socket.io-client")("https://elbayoumi.github.io/Ecommerce-OOP/chat.html");
+// const socket = require("socket.io-client")("https://elbayoumi.github.io/Ecommerce-OOP/chat.html");
 
-socket.on("connect_error", (err) => {
-  console.log(`connect_error due to ${err.message}`);
-});
+// socket.on("connect_error", (err) => {
+//   console.log(`connect_error due to ${err.message}`);
+// });
 app.get('/', (req, res) => {
     res.status(200).json({ message: 'ok' });
 })
