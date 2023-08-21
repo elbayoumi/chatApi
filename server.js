@@ -26,7 +26,7 @@ io.on('connection', (socket) => {
         // socket.broadcast.emit('sendChatTyping', messege);
     })
     socket.on("sendChatToServerTyping", (messege) => {
-        console.log(messege);
+        // console.log(messege);
         ///to make broadcast
         socket.broadcast.emit('sendChatToClientTyping', messege);
     })
