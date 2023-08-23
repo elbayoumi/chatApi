@@ -1,7 +1,6 @@
 const express = require('express');
 const app = express();
 const server = require("http").createServer(app);
-const jwt = require('jsonwebtoken');
 const io = require("socket.io")(server, {
     cors: {
         origin: "*"
