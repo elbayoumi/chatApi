@@ -27,7 +27,12 @@ io.on('connection', (socket) => {
                 // Emit an event with a dynamic response name in response to any received event
                 io.emit(`r${eventName}`, data);
             });
+            socket.on("se", ( messege) => {
+                // console.log(messege);
+                let messages = JSON.parse(messege)
+                io.sockets.emit("re", JSON.stringify(messages));
 
+            })
             socket.on("customEvent", (eventName, messege) => {
                 // console.log(messege);
                 let messages = JSON.parse(messege)
