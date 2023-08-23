@@ -19,13 +19,13 @@ app.get('/', (req, res) => {
 })
 io.on('connection', (socket) => {
     const userToken = socket.handshake.query.token;
-    verify(userToken, JWT_SECRET_KEY)
         try {
+            verify(userToken, JWT_SECRET_KEY)
 
             // console.log('User authenticated:', decodedToken);
             socket.onAny((eventName, data) => {
                 // Emit an event with a dynamic response name in response to any received event
-                io.emit('r' + eventName, data);
+                io.emit(`r${eventName}`, data);
             });
 
             socket.on("customEvent", (eventName, messege) => {
