@@ -20,7 +20,7 @@ app.get('/', (req, res) => {
 io.on('connection', (socket) => {
     const userToken = socket.handshake.query.token;
         try {
-            verify(userToken, JWT_SECRET_KEY)
+    verify(userToken, JWT_SECRET_KEY);
 
             // console.log('User authenticated:', decodedToken);
             socket.onAny((eventName, data) => {
@@ -37,6 +37,14 @@ io.on('connection', (socket) => {
                 // console.log(messege);
                 let messages = JSON.parse(messege)
                 io.sockets.emit(eventName, JSON.stringify(messages));
+
+            })
+            socket.on("driver", (eventName, messege) => {
+                io.sockets.emit(eventName, messege);
+
+            })
+            socket.on("admin", (eventName, messege) => {
+                io.sockets.emit(eventName, messege);
 
             })
             socket.on('desconnect', (socket) => {
@@ -59,3 +67,4 @@ server.listen(3000, () => {
     console.log("Server listening on port 3000 is runing")
 });
 //
+
